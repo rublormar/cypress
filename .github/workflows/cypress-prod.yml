@@ -16,8 +16,4 @@ jobs:
           cd ${{ github.workspace }}
           scp -r -o stricthostchechecking=no -o UserKnownHostsFile=/dev/null -i ./nuxt-project/dist/* ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/a21rublormar/web/cypress-app-example.daw.inspedralbes.cat/public_html/web/
           
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          build: npm run build
-          start: npm start
+      

@@ -10,10 +10,12 @@ jobs:
         uses: actions/checkout@v4
       - name: scp a producció
         run: | 
-          cd ./nuxt-project
+          echo "${{ secrets.PROD_KEY }}" > ~/prod_key.pem
+          chmod 600 ~/prod_key.pem
+          cd ./web/nuxt-project
           npm install 
           npm run build
           cd ${{ github.workspace }}
-          scp -r -o stricthostchechecking=no -o UserKnownHostsFile=/dev/null -i ./nuxt-project/dist/* ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/a21rublormar/web/cypress-app-example.daw.inspedralbes.cat/public_html/web/
+          scp -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem" ./web/nuxt-project/dist/* ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/a21rublormar/web/cypress-app-example.daw.inspedralbes.cat/public_html/web/
           
       

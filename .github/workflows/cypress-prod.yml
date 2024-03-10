@@ -16,6 +16,6 @@ jobs:
           npm install 
           npm run build
           cd ${{ github.workspace }}
-          scp -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem" ./web/nuxt-project/dist/* ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/a21rublormar/web/cypress-app-example.daw.inspedralbes.cat/public_html/web/
+          scp -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem" ./web/nuxt-project/.output/* ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }}:/home/a21rublormar/web/cypress-app-example.daw.inspedralbes.cat/public_html/web/
           
       
